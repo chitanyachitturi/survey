@@ -1,0 +1,139 @@
+<div class="card m-3">
+  <div class="card-body">
+  <form [formGroup]="surveyForm" (ngSubmit)="onSubmit(userPost.value)">
+
+        <div class="form-group col-5">
+          <label>First Name:</label>
+          <input id="fname" type="text" formControlName="fName" class="form-control" [ngClass]="{'is-invalid':submitted && f['fName'].errors}"/>
+          <div *ngIf="submitted && f['fName'].errors" class="invalid-feedback"></div>
+          <div *ngIf="submitted && surveyForm.controls['fName'].errors" class="invalid-feedback">first name is required</div>
+        </div>
+
+        <div class="form-group col-5">
+          <label>last Name:</label>
+          <input id="lname" type="text" formControlName="lName" class="form-control" [ngClass]="{'is-invalid':submitted && f['lName'].errors}"/>
+          <div *ngIf="submitted && f['lName'].errors" class="invalid-feedback"></div>
+          <div *ngIf="submitted && surveyForm.controls['lName'].errors" class="invalid-feedback">last name is required</div>
+        </div>
+        
+        <div class="form-group col-5">
+          <label>StudentID:</label>
+          <input placeholder="g01333314" id="id" type="text" formControlName="id" class="form-control" [ngClass]="{'is-invalid':submitted && f['id'].errors}"/>
+          <div *ngIf="submitted && surveyForm.controls['id'].errors" class="invalid-feedback">Enter a valid student id</div>
+        </div>
+  
+        <div class="form-group col-5">
+          <label>Street Address:</label>
+          <input id="StreetAddress" placeholder="4400 university drive" id="address" type="text" formControlName="address" class="form-control" [ngClass]="{'is-invalid':submitted && f['address'].errors}"/>
+          <div *ngIf="submitted && surveyForm.controls['address'].errors" class="invalid-feedback">Enter a valid Address.</div>
+        </div>
+        
+        <div class="form-group col-5">
+          <label>City:</label>
+          <input type="text" placeholder="Fairfax" formControlName="city" id="city" class="form-control" [ngClass]="{'is-invalid':submitted && f['city'].errors}"/>
+          <div *ngIf="submitted && surveyForm.controls['city'].errors" class="invalid-feedback">Enter a valid city name.</div>
+        </div>
+  
+        <div class="form-group col-5">
+          <label>State:</label>
+          <input id="state" type="text" placeholder="VA" formControlName="state" class="form-control" [ngClass]="{'is-invalid':submitted && f['state'].errors}"/>
+          <div *ngIf="submitted && surveyForm.controls['state'].errors" class="invalid-feedback">Enter a valid State.</div>
+        </div>
+  
+        <div class="form-group col-5">
+          <label>Zip Code:</label>
+          <input id="Zip" type="text" placeholder="22030" formControlName="Zip" class="form-control" [ngClass]="{'is-invalid':submitted && f['Zip'].errors}"/>
+          <div *ngIf="submitted && surveyForm.controls['Zip'].errors" class="invalid-feedback">Enter a valid Zip Code.</div>
+        </div>
+  
+        <div class="form-group col-5">
+          <label>Telephone Number:</label>
+          <input id="Telephone" type="number" placeholder="7039932000" formControlName="Telephone" class="form-control" [ngClass]="{'is-invalid':submitted && f['Telephone'].errors}"/>
+          
+          <div *ngIf="submitted && surveyForm.controls['Telephone'].errors" class="invalid-feedback">Enter a valid Telephone number.</div>
+        </div>
+  
+        <div class="form-group col-5">
+          <label>email:</label>
+          <input id="email" type="email" placeholder="abc@domain.com" formControlName="email" class="form-control" [ngClass]="{'is-invalid':submitted && f['email'].errors}"/>
+          <div *ngIf="submitted && surveyForm.controls['email'].errors" class="invalid-feedback">Enter a valid email.</div>
+        </div>
+  
+        <div class="form-group col-5">
+          <label>URL:</label>
+          <input id="Url" type="url" placeholder="https://www.google.com" formControlName="Url" class="form-control" [ngClass]="{'is-invalid':submitted && f['Url'].errors}"/>
+          <div *ngIf="submitted && surveyForm.controls['Url'].errors" class="invalid-feedback">Enter a URL</div>
+        </div>
+
+        <!--Date will be saved in the format YYYY-MM-DD-->
+        <div class="form-row col-5">
+          <div class="form-group col">
+              <label>Date of Survey</label>
+              <input type="date" formControlName="dos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dos'].errors }" />
+              <div *ngIf="submitted && f['dos'].errors" class="invalid-feedback">Date of survey is required</div>
+                  <!--<div *ngIf="f['dos'].errors['required']">Date of Birth is required</div>-->
+                  <!--<div *ngIf="f['dos'].errors['pattern']">Date of Birth must be a valid date in the format YYYY-MM-DD</div>-->
+          </div>
+        </div>
+
+        <div class="form-group col-5">
+          <label>Comments:</label>
+          <textarea id="comments" class="col-75" formControlName="comments" [ngClass]="{'is-invalid':submitted && f['Url'].errors}" name="comment" id="comment" rows="3" cols="85" tabindex=" "  placeholder="Please leave your comment here..."></textarea>
+          <div *ngIf="submitted && surveyForm.controls['Url'].errors" class="invalid-feedback"></div>
+        </div>
+
+        <div class="form-row col-5">
+          <label>Would you recommend our school to prospective students?</label>
+          <div class="form-row col-5">
+            <select id="recommendation" class="form-control" formControlName="recommendation" [ngClass]="{ 'is-invalid': submitted && f['recommendation'].errors }">
+              <option value="very likely">Very likely</option>
+              <option value="likely">Likely</option>
+              <option value="unlikely">Unlikely</option>
+            </select>
+            <div *ngIf="submitted && f['recommendation'].errors" class="invalid-feedback">This field is mandatory</div>
+          </div>  
+        </div>
+
+        <div class="form-row col-5">
+          <label>How did you become interested in our school?</label><p class="mandatory">*</p>
+        </div>
+        <div class="form-row col-5"> 
+          <div>
+            <input type="radio" id="Friends" name="Interest" value="Friends" formControlName="interest" [ngClass]="{ 'is-invalid': submitted && f['interest'].errors }"/>
+            <label for="Friends">Friends</label>
+          </div>
+        
+          <div>
+            <input type="radio" id="Television" name="Interest" value="Interest" formControlName="interest" [ngClass]="{ 'is-invalid': submitted && f['interest'].errors }"/>
+            <label for="Television">Television</label>
+          </div>
+       
+          <div>
+            <input type="radio" id="Internet" name="Interest" value="Internet" formControlName="interest" [ngClass]="{ 'is-invalid': submitted && f['interest'].errors }"/>
+            <label for="Internet">Internet</label>
+          </div>
+        
+          <div>
+            <input type="radio" id="Others" name="Interest" value="Others" formControlName="interest" [ngClass]="{ 'is-invalid': submitted && f['interest'].errors }"/>
+            <label for="Others">Others</label>
+          <div *ngIf="submitted && f['interest'].errors" class="invalid-feedback">Atleast one interest must be check</div>
+          </div>
+        </div> 
+
+        
+        <div *ngFor="let data of Data; let i=index" class="form-row col-5">
+          <label>
+            <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+            {{data.name}}
+          </label>
+        </div>
+        
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary mr-1" >Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+        </div>
+  </form>
+  </div>
+  </div>
+  
+  
